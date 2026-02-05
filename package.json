@@ -20,7 +20,15 @@
     },
     "build": {
         "appId": "com.beandgo.portal",
-        "productName": "BeandGo Portal",
+        "productName": "Beandgo Portal",
+        "repository": "https://github.com/cuatrecasespro/beandgo-portal.git",
+        "publish": [
+            {
+                "provider": "github",
+                "owner": "cuatrecasespro",
+                "repo": "beandgo-portal"
+            }
+        ],
         "win": {
             "target": [
                 "nsis"
@@ -31,5 +39,8 @@
             "oneClick": false,
             "allowToChangeInstallationDirectory": true
         }
+    },
+    "dependencies": {
+        "electron-updater": "^6.7.3"
     }
 }

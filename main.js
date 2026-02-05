@@ -1,5 +1,10 @@
 const { app, BrowserWindow, ipcMain, Menu, dialog } = require('electron');
 const path = require('path');
+const { autoUpdater } = require('electron-updater');
+
+// Configuració de l'auto-updater
+autoUpdater.autoDownload = true;
+autoUpdater.autoInstallOnAppQuit = true;
 
 let mainWindow;
 
@@ -109,6 +114,40 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
+});
+
+// Lògica d'actualitzacions
+autoUpdater.on('update-available', () => {
+    console.log('Actualització disponible');
+});
+
+autoUpdater.on('update-downloaded', (info) => {
+    dialog.showMessageBox({
+        type: 'info',
+        title: 'Actualització enllestida',
+        message: `La versió ${info.version} s'ha descarregat i s'instal·larà en tancar l'aplicació.`,
+        buttons: ['D\'acord']
+    });
+});
+
+autoUpdater.on('error', (err) => {
+    console.error('Error en l\'actualització:', err);
+});
+
+function checkUpdates() {
+    autoUpdater.checkForUpdatesAndNotify().catch(err => {
+        console.error('Error buscant actualitzacions:', err);
+    });
+}
+
+app.whenReady().then(() => {
+    createWindow();
+
+    // Buscar actualitzacions en iniciar
+    checkUpdates();
+
+    // Buscar actualitzacions cada 4 hores
+    setInterval(checkUpdates, 4 * 60 * 60 * 1000);
 });
 
 // Handle navigation requests from renderer
