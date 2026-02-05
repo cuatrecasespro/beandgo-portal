@@ -1,0 +1,35 @@
+{
+    "name": "beandgo-portal",
+    "version": "1.2026.205",
+    "description": "Portal intern de Be&Go per accedir a Fibery",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder"
+    },
+    "keywords": [
+        "beandgo",
+        "fibery",
+        "portal"
+    ],
+    "author": "Be&Go",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^28.0.0",
+        "electron-builder": "^24.9.1"
+    },
+    "build": {
+        "appId": "com.beandgo.portal",
+        "productName": "BeandGo Portal",
+        "win": {
+            "target": [
+                "nsis"
+            ],
+            "icon": "assets/icon.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        }
+    }
+}

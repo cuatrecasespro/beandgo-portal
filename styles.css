@@ -1,0 +1,485 @@
+/* ============================================
+   Be&Go Portal - Electron App Styles
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --accent-color: #10b981;
+    --accent-hover: #059669;
+    --warning-color: #f59e0b;
+    --warning-hover: #d97706;
+
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-card: rgba(30, 41, 59, 0.8);
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --border-color: rgba(148, 163, 184, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    --navbar-height: 70px;
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* ============================================
+   Navigation Bar - Vertical Sidebar
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background: #1e293b;
+    /* Solid opaque color */
+    /* backdrop-filter: blur(10px); Removed to ensure opacity */
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 15px 12px;
+    z-index: 999999;
+    box-shadow: 4px 0 20px var(--shadow-color);
+    overflow-y: auto;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-btn {
+    margin-bottom: 20px;
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+}
+
+.search-btn:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+}
+
+.nav-group {
+    margin-bottom: 10px;
+}
+
+.nav-group:last-child {
+    margin-bottom: 0;
+}
+
+.nav-group-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+    padding-left: 12px;
+    font-weight: 600;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid transparent;
+    text-align: left;
+    width: 100%;
+}
+
+.nav-btn:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-color);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.nav-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.nav-btn.accent {
+    background: linear-gradient(135deg, var(--accent-color), #34d399);
+    color: white;
+}
+
+.nav-btn.accent:hover {
+    background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+    transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.nav-btn.accent-warning {
+    background: linear-gradient(135deg, var(--warning-color), #fbbf24);
+    color: #1e293b;
+}
+
+.nav-btn.accent-warning:hover {
+    background: linear-gradient(135deg, var(--warning-hover), var(--warning-color));
+    transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.btn-text {
+    flex: 1;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+.main-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    padding: 40px;
+    padding-left: 320px;
+    /* 280px sidebar + 40px spacing */
+    overflow-y: auto;
+}
+
+.welcome-screen.hidden {
+    display: none;
+}
+
+.welcome-container {
+    text-align: center;
+    max-width: 1200px;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcome-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 50px;
+}
+
+.quick-access {
+    margin-top: 20px;
+}
+
+.quick-access-title {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.quick-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.quick-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    text-align: center;
+}
+
+.quick-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+.quick-card.accent {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.05));
+}
+
+.quick-card.accent:hover {
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+}
+
+.quick-card.warning {
+    border-color: var(--warning-color);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));
+}
+
+.quick-card.warning:hover {
+    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.quick-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.quick-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   WebView Container
+   ============================================ */
+.webview-container {
+    display: none;
+    height: 100%;
+    position: relative;
+}
+
+.webview-container.active {
+    display: block;
+}
+
+webview {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--bg-tertiary);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-overlay p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Tutorial Section */
+.tutorial-section {
+    margin-top: 30px;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tutorial-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.workflow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.workflow-step {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg-tertiary);
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    transition: transform 0.2s ease;
+}
+
+.workflow-step:hover {
+    transform: translateX(5px);
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid var(--primary-color);
+}
+
+.step-number {
+    background: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.step-arrow {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
